@@ -12,9 +12,14 @@
 */
 
 
-Route::get('/contact',['uses'=>'PagesController@getContact', 'as'=>'contact']);
 
-Route::get('/about',['uses'=>'PagesController@getAbout', 'as'=>'about']);
-Route::get('/',['uses'=>'PagesController@getIndex', 'as'=>'home']);
+Route::group(['middleware' => ['web']], function(){
 
-Route::resource('posts','PostController');
+    Route::get('/contact',['uses'=>'PagesController@getContact', 'as'=>'contact']);
+
+    Route::get('/about',['uses'=>'PagesController@getAbout', 'as'=>'about']);
+    Route::get('/',['uses'=>'PagesController@getIndex', 'as'=>'home']);
+
+    Route::resource('posts','PostController');
+
+});
