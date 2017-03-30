@@ -48,7 +48,7 @@ class PostController extends Controller
          $post->title = $request->title;
          $post->body = $request->body;
          $post->save();
-         
+
          //Redirect the page
 
         return redirect()->route('posts.show',$post->id);
