@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-
 
 use App\Post;
 use Session;
@@ -19,6 +17,8 @@ class PostController extends Controller
     public function index()
     {
         //
+        $posts = Post::all();
+        return view('admin_post.index', compact('posts'));
     }
 
     /**
