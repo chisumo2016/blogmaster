@@ -113,7 +113,6 @@ class PostController extends Controller
         Session::flash('success','This post was successfully saved');
 
         //redirect with flash data to posts.show
-
         return redirect()->route('posts.show', $post->id);
 
     }
@@ -127,5 +126,9 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::find($id);
+        $post->delete();
+        Session::flash('success', 'The post was succesfully deleted');
+        return redirect()->route('posts.index');
     }
 }
